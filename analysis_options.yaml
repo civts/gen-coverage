@@ -1,0 +1,7 @@
+include: package:effective_dart/analysis_options.yaml
+
+linter:
+  rules:
+    avoid_print: false
+    prefer_single_quotes: true
+    no_adjacent_strings_in_list: true

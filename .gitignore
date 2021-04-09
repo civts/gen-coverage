@@ -1,0 +1,20 @@
+**/.dart_tool/
+**/.packages
+**/build/
+doc/api/
+
+**/coverage/
+**/lcov.info/
+
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+#VScode
+.vscode
+
+# Mac
+.DS_Store
