@@ -77,6 +77,67 @@ void main() {
           });
         });
       });
+      group('if help flag is passed', () {
+        group('and other flags are passed', () {
+          group('and they are all valid', () {
+            test('should print help menu', () async {
+              final process = await Process.start(
+                'dart',
+                ['run', 'gen_coverage', '--help'],
+              );
+              await expectLater(
+                process.stdout.transform(utf8.decoder),
+                emits(
+                  contains('-h, --help                      Show help menu'),
+                ),
+              );
+              final exitCode = await process.exitCode;
+              expect(exitCode, 0);
+            });
+          });
+          group('but some are not valid', () {
+            test('should print help menu', () async {
+              final process = await Process.start(
+                'dart',
+                ['run', 'gen_coverage', '--help', '--wrongFlags'],
+              );
+              await expectLater(
+                process.stdout.transform(utf8.decoder),
+                emits(
+                  'Invalid arguments: '
+                  'Could not find an option named "wrongFlags".\n',
+                ),
+              );
+              final exitCode = await process.exitCode;
+              expect(exitCode, 1);
+            });
+          });
+        });
+        group('and no other flags are passed', () {
+          test('should print help menu', () async {
+            final process = await Process.start(
+              'dart',
+              [
+                'run',
+                'gen_coverage',
+                '--port',
+                '1234',
+                '--help',
+                '--min-coverage',
+                '50'
+              ],
+            );
+            await expectLater(
+              process.stdout.transform(utf8.decoder),
+              emits(
+                contains('-h, --help                      Show help menu'),
+              ),
+            );
+            final exitCode = await process.exitCode;
+            expect(exitCode, 0);
+          });
+        });
+      });
     });
   });
 }
