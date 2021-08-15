@@ -42,7 +42,6 @@ Future main(List<String> arguments) async {
 
   print('🏃 Running tests');
   await runTestsAndGenerateCoverageInfo(
-    Directory.current.path,
     port,
     printTestOutput: options[_kPrintTestOutputFlagName] as bool,
   );

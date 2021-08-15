@@ -9,10 +9,9 @@ import 'package:path/path.dart' as path;
 const coverageDataPath = 'coverage/.gen_coverage';
 
 ///Executes all tests using the [test package](https://pub.dev/packages/test)
-///and stores the coverage information it generates in the[coverageDataPath]
+///and stores the coverage information it generates in the [coverageDataPath]
 ///directory
 Future<void> runTestsAndGenerateCoverageInfo(
-  String packageRoot,
   String? port, {
   bool printTestOutput = false,
 }) async {
