@@ -15,8 +15,19 @@ command `flutter test --coverage`.
 
 ## Installation
 
-To install `gen_coverage`, download this repo and add this line to your
-`pubspec.yaml`.
+To install `gen_coverage`, you can add the following lines to your
+`pubspec.yaml` to fetch the package directly from github at a specific commit.
+
+```yaml
+dev_dependencies:
+  gen_coverage:
+    git:
+      url: https://github.com/civts/gen-coverage.git
+      ref: 8639946ffbed59b7c28e1628b43f55b671983161 #hash of the last commit you want to fetch
+```
+
+Alternatively, you can download this repository on your machine and add to the
+`pubspec.yaml` the following lines instead.
 
 ```yaml
 dev_dependencies:
