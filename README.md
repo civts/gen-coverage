@@ -10,8 +10,25 @@
 
 1.  Enforce a minimum coverage percentage using the `--min-coverage` flag.
 
-If you are using Flutter, you do not need to install this, since you can use the
-command `flutter test --coverage`.
+## Alternatives
+
+- If you are using Flutter, you do not need to install this package: use the
+  command `flutter test --coverage`.
+
+- If you only want the `lcov.info` file, you can run a small script to generate
+  it for you (provided you have the dependencies
+  [test](https://pub.dev/packages/test) and
+  [coverage](https://pub.dev/packages/coverage) installed).  
+  This package does basically the same thing, plus, optionally, a final check to
+  ensure that the code meets a specified minimum coverage percentage.
+  ```bash
+  #Run tests and collect coverage info
+  dart run test --coverage .tempCoverageDir
+  #Generate lcov.info file in ./coverage
+  dart run coverage:format_coverage -l -c --report-on lib -i .tempCoverageDir --packages .packages -o coverage/lcov.info
+  #Clean up unneeded coverage info
+  rm -r .tempCoverageDir
+  ```
 
 ## Installation
 
@@ -49,10 +66,7 @@ Using the `--help` flag will show all the options the command supports.
 
 At the moment, I am not thinking about publishing this package. There are
 already other packages that serve a similar purpose, like
-[test_cov](https://pub.dev/packages/test_cov) and it is also possible to use
-simple
-[bash scripts](https://github.com/pulyaevskiy/test-coverage/pull/39#issuecomment-817197737)
-to generate the `.lcov` file.  
+[test_cov](https://pub.dev/packages/test_cov).  
 If you would like to see this package published, go ahead and let me know.  
 For now, I will continue to use it in my projects and update it as needed.
 
